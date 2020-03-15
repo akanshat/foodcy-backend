@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 
 const handleRegister = async (req, res, db) => {
-    const { name, email, password } = req.body;
+    const { name, email: mail, password } = req.body;
+    const email = mail.toLowerCase();
 
     if (!name || !email || !password)
         return res.status(400).json({ error: "All fields are required" });
