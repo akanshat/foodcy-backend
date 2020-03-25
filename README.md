@@ -1,4 +1,4 @@
-# Foodcy- Find Restaurants
+# Foodcy-backend
 
 This is an express API which uses mongoDB as database and JWTs for authentication.
 
