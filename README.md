@@ -1,4 +1,4 @@
-# credflow-task-backend
+# Foodcy- Find Restaurants
 
 This is an express API which uses mongoDB as database and JWTs for authentication.
 
