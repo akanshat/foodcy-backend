@@ -1,10 +1,11 @@
-const { ObjectID } = require('mongodb');
+import { ObjectId } from 'mongodb';
+
 
 const getRes = async (req, res, db) => {
     const { id } = req.body;
-    const rest = await db.collection("restaurants").findOne({ _id: ObjectID(id) });
-    const reviews = await db.collection("reviews").find({ resId: ObjectID(id) }).toArray();
-    
+    const rest = await db.collection("restaurants").findOne({ _id: new ObjectId(id) });
+    const reviews = await db.collection("reviews").find({ resId: new ObjectId(id) }).toArray();
+
     return res.status(200).json({
         restaurant: {
             ...rest,
@@ -12,5 +13,4 @@ const getRes = async (req, res, db) => {
         }
     });
 }
-
-module.exports = getRes;
+export default getRes

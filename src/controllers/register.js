@@ -1,4 +1,5 @@
-const bcrypt = require('bcrypt');
+import bcrypt from "bcryptjs";
+
 
 const handleRegister = async (req, res, db) => {
     const { name, email: mail, password } = req.body;
@@ -21,4 +22,4 @@ const handleRegister = async (req, res, db) => {
     }
 }
 
-module.exports = handleRegister;
+export default handleRegister

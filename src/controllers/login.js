@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const handleLogin = async (req, res, db) => {
     const { email: mail, password } = req.body;
@@ -17,14 +17,14 @@ const handleLogin = async (req, res, db) => {
     if (!isPasswordCorrect)
         return res.status(400).json({ error: "Invalid email or password" });
 
-    const token = jwt.sign({email},process.env.JWT_SECRET);
+    const token = jwt.sign({ email }, process.env.JWT_SECRET);
 
-    
-    return res.status(200).json({token});
-    
-    
+
+    return res.status(200).json({ token });
+
+
 }
 
 
 
-module.exports = handleLogin;
+export default handleLogin;

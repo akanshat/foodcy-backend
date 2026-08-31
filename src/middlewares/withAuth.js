@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken'
 const secret = process.env.JWT_SECRET;
 
 const withAuth = (req, res, next) => {
@@ -7,17 +7,16 @@ const withAuth = (req, res, next) => {
     if (!token)
         return res.status(401).json({ error: "Unauthorized" });
 
-    
 
-    try{
+
+    try {
         const decoded = jwt.verify(token, secret);
         req.email = decoded.email;
         next();
     }
-    catch(err)
-    {
+    catch (err) {
         return res.status(401).json({ error: "Unauthorized" });
     }
 }
 
-module.exports = withAuth;
+export default withAuth
